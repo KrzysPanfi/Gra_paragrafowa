@@ -12,37 +12,135 @@ public class Main {
         Przedmiot pancerz=new Przedmiot("pancerz",0,50,0);
         Przedmiot miecz=new Przedmiot("miecz",0,0,20);
         ArrayList<Przedmiot>eq=new ArrayList<>();
+        ArrayList<Przedmiot>eq0=new ArrayList<>();
+        Postać bohater=new Postać("Bohater",6,6,6,eq);
 
         int piętra=0;
         boolean gra=true;
         if(poziom_trudnosci==1){
-            Postać bohater=new Postać("Bohater",100,50,10,eq);
+            bohater.setHp(100);
+            bohater.setPancerz(50);
+            bohater.setAtak(10);
+            bohater.setEkwipunek(eq);
         }
         if(poziom_trudnosci==2){
-            Postać bohater=new Postać("Bohater",100,0,10,eq);
+            bohater.setHp(100);
+            bohater.setPancerz(0);
+            bohater.setAtak(10);
+            bohater.setEkwipunek(eq);
         }
         if(poziom_trudnosci==3){
-            Postać bohater=new Postać("Bohater",50,0,10,eq);
+            bohater.setHp(50);
+            bohater.setPancerz(0);
+            bohater.setAtak(10);
+            bohater.setEkwipunek(eq);
         }
-        System.out.println(("Jesteś poszukiwaczem przygód okrywającym starożytne lochy. Lochy są podzielona na piętra.");
+        System.out.println("Jesteś poszukiwaczem przygód okrywającym starożytne lochy. Lochy są podzielona na piętra.");
         System.out.println("Aby wybrać akcję trzeba podac jej numer");
         while (gra){
-            System.out.println("Piętro"+piętra);
-            int pokój=random.nextInt(1,4);
+            System.out.println("Piętro "+piętra);
+            int pokój=random.nextInt(1,5);
             if(pokój==1){
                 boolean pokonany_pokój=false;
                 while(!pokonany_pokój) {
                     System.out.println("Przed tobą widnieje dziura");
-                    System.out.println("1 Przeskocz nad dziurą. 50% szany powodzenia. 2 wypisz statystyki");
+                    System.out.println("1 Przeskocz nad dziurą. 50% szany powodzenia. 2 wypisz statystyki. 3 użyj eliskiru. 4 użyj pancerza. 5 użyj miecza");
                     int akcja=scanner.nextInt();
                     if(akcja==2){
                         bohater.wypisz();
                     }
+                    if(akcja==3) {
+                        bohater.dodajhp(eliksir_zdrowia);
+                    }
+                    if(akcja==4) {
+                        bohater.dodajpancerz(pancerz);
+                    }
+                    if(akcja==5) {
+                        bohater.dodajatak(miecz);
+                    }
                     if(akcja==1){
-
+                        int chance=random.nextInt(1,3);
+                        if(chance==1){
+                            System.out.println("Spadles do dziury -30hp");
+                            bohater.setHp(bohater.getHp()-30);
+                        }
+                        else System.out.println("Przeskoczyłeś dziurę");
+                        pokonany_pokój=true;
+                       // piętra++;
                     }
                 }
             }
+            if(pokój==2){
+                boolean pokonany_pokój=false;
+                while(!pokonany_pokój){
+                    Postać wróg=new Postać("Bandyta",100,0,20,eq0);
+                    System.out.println("Przed tobą widnieje wrogi bandyta");
+                    System.out.println("1 Zaatakuj wroga. 2 wypisz statystyki. 3 użyj eliskiru. 4 użyj pancerza. 5 użyj miecza");
+                    int akcja=scanner.nextInt();
+                    if(akcja==2){
+                        bohater.wypisz();
+                    }
+                    if(akcja==3) {
+                        bohater.dodajhp(eliksir_zdrowia);
+                    }
+                    if(akcja==4) {
+                        bohater.dodajpancerz(pancerz);
+                    }
+                    if(akcja==5) {
+                        bohater.dodajatak(miecz);
+                    }
+                    if(akcja==1){
+                        boolean walka=true;
+                        while (walka) {
+                            int pierwszeństwo=random.nextInt(1,3);
+                            if (wróg.getHp() <= 0) {
+                                System.out.println("Pokonałeś wroga");
+                                walka = false;
+                            } else if(bohater.getHp()<=0){
+                                walka=false;
+                            }
+                            else if (pierwszeństwo==1) {
+                                wróg.setHp(wróg.getHp()-bohater.getAtak());
+                                System.out.println("Zaatakowałeś wroga");
+                            }
+                            else  if(pierwszeństwo==2){
+                                bohater.setHp(bohater.getHp()-wróg.getAtak());
+                                System.out.println("Wróg zaatakował ciebie");
+                            }
+                        }
+                        pokonany_pokój=true;
+                    }
+                }
+            }
+            if(pokój==3){
+                boolean pokonany_pokój=false;
+                while (!pokonany_pokój){
+                    System.out.println("Przed toba widnieje pułapka wymagająca krew.");
+                    System.out.println("1 Oddaj krew -10HP. 2 Spróbuj ominąć pułapkę 25% szans na powodzienie. 3 wypisz statystyki. 4 użyj eliskiru. 5 użyj pancerza. 6 użyj miecza");
+                    int akcja=scanner.nextInt();
+                    if(akcja==3){
+                        bohater.wypisz();
+                    }
+                    if(akcja==4) {
+                        bohater.dodajhp(eliksir_zdrowia);
+                    }
+                    if(akcja==5) {
+                        bohater.dodajpancerz(pancerz);
+                    }
+                    if(akcja==6) {
+                        bohater.dodajatak(miecz);
+                }
+            }
+
+
+            if(bohater.getHp()>=0){
+                gra=false;
+            }
+            else {
+                piętra++;
+            }
         }
+        System.out.println("Poległeś");
+        System.out.println("Dotarłes do "+piętra+" piętra");
     }
 }
