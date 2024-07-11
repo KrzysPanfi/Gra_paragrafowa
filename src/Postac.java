@@ -22,12 +22,15 @@ public class Postac {
         this.atak = atak;
         this.ekwipunek=ekwipunek;
     }
-    public void odnies_obrazenia(int zadane_obrażenia){
+    public void odnies_obrazenia(int zadane_obrazenia){
         if(pancerz>0){
-            pancerz-=zadane_obrażenia;
+            pancerz-=zadane_obrazenia;
+            if(pancerz<0){
+                pancerz=0;
+            }
         }
         else {
-            hp-=zadane_obrażenia;
+            hp-=zadane_obrazenia;
         }
     }
     public void zadaj_obrazenia(Postac cel){

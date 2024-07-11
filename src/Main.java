@@ -11,9 +11,6 @@ public class Main {
         Random random = new Random();
         System.out.println("Wybierz poziom trudności. 1 to łatwy 2 to średni 3 to trudny");
         int poziom_trudnosci = scanner.nextInt();
-        //Przedmiot eliksir_zdrowia = new Przedmiot("eliksir zdrowia", 50, 0, 0);
-       // Przedmiot  pancerz = new Przedmiot("kawałek_pancerza", 0, 50, 0);
-       // Przedmiot miecz = new Przedmiot("miecz", 0, 0, 20);
         ArrayList<Przedmiot> eq = new ArrayList<>();
         ArrayList<Przedmiot> eq0 = new ArrayList<>();
         Postac bohater = new Postac("Bohater", 6, 6, 6, eq);
@@ -101,7 +98,7 @@ public class Main {
                  pokonany_pokoj = false;
                 while (!pokonany_pokoj) {
                     System.out.println("Przed toba widnieje pułapka wymagająca krew.");
-                    System.out.println("1 Oddaj krew -10HP. 2 Spróbuj ominąć pułapkę 25% szans na powodzienie. 3 Menu postaci");
+                    System.out.println("1 Oddaj krew -10HP. 2 Spróbuj ominąć pułapkę 25% szansy powodzenia. 3 Menu postaci");
                     int akcja = scanner.nextInt();
                     if (akcja == 3) {
                         Menu_ekwipunku(bohater);
@@ -119,8 +116,8 @@ public class Main {
                             System.out.println("Pułapka raniła cię 40dmg");
                             bohater.odnies_obrazenia(40);
                         }
-                        pokonany_pokoj = true;
                     }
+                    pokonany_pokoj = true;
                 }
 
             }
