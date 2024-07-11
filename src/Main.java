@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     static Przedmiot eliksir_zdrowia = new Przedmiot("eliksir zdrowia", 50, 0, 0);
-   static Przedmiot  pancerz = new Przedmiot("kawałek pancerza", 0, 50, 0);
-   static Przedmiot miecz = new Przedmiot("miecz", 0, 0, 20);
+    static Przedmiot pancerz = new Przedmiot("kawałek pancerza", 0, 50, 0);
+    static Przedmiot miecz = new Przedmiot("miecz", 0, 0, 20);
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -42,20 +43,20 @@ public class Main {
             int pokoj = random.nextInt(1, 5);
             boolean pokonany_pokoj;
             if (pokoj == 1) {
-                 pokonany_pokoj = false;
+                pokonany_pokoj = false;
                 while (!pokonany_pokoj) {
                     System.out.println("Przed tobą widnieje dziura");
                     System.out.println("1 Przeskocz nad dziurą. 50% szany powodzenia. 2 Menu postaci");
                     int akcja = scanner.nextInt();
-                   if(akcja==2){
-                       Menu_ekwipunku(bohater);
-                   }
+                    if (akcja == 2) {
+                        Menu_ekwipunku(bohater);
+                    }
 
                     if (akcja == 1) {
                         int chance = random.nextInt(1, 3);
                         if (chance == 1) {
                             System.out.println("Spadles do dziury 30dmg");
-                             bohater.odnies_obrazenia(30);
+                            bohater.odnies_obrazenia(30);
                         } else System.out.println("Przeskoczyłeś dziurę");
                         pokonany_pokoj = true;
 
@@ -63,7 +64,7 @@ public class Main {
                 }
             }
             if (pokoj == 2) {
-                 pokonany_pokoj = false;
+                pokonany_pokoj = false;
                 while (!pokonany_pokoj) {
                     Postac wrog = new Postac("Bandyta", 100, 0, 10, eq0);
                     System.out.println("Przed tobą widnieje wrogi bandyta");
@@ -83,11 +84,11 @@ public class Main {
                             } else if (bohater.getHp() <= 0) {
                                 walka = false;
                             } else if (atak == 1) {
-                               bohater.zadaj_obrazenia(wrog);
-                                System.out.println("Zaatakowałeś wroga "+bohater.getAtak()+"dmg");
+                                bohater.zadaj_obrazenia(wrog);
+                                System.out.println("Zaatakowałeś wroga " + bohater.getAtak() + "dmg");
                             } else if (atak == 2) {
-                               wrog.zadaj_obrazenia(bohater);
-                                System.out.println("Wróg zaatakował ciebie "+wrog.getAtak()+"dmg");
+                                wrog.zadaj_obrazenia(bohater);
+                                System.out.println("Wróg zaatakował ciebie " + wrog.getAtak() + "dmg");
                             }
                         }
                         pokonany_pokoj = true;
@@ -95,7 +96,7 @@ public class Main {
                 }
             }
             if (pokoj == 3) {
-                 pokonany_pokoj = false;
+                pokonany_pokoj = false;
                 while (!pokonany_pokoj) {
                     System.out.println("Przed toba widnieje pułapka wymagająca krew.");
                     System.out.println("1 Oddaj krew -10HP. 2 Spróbuj ominąć pułapkę 25% szansy powodzenia. 3 Menu postaci");
@@ -121,33 +122,33 @@ public class Main {
                 }
 
             }
-            if(pokoj==4){
-               pokonany_pokoj=false;
-                while (!pokonany_pokoj){
+            if (pokoj == 4) {
+                pokonany_pokoj = false;
+                while (!pokonany_pokoj) {
                     System.out.println("Przed tobą widnieje skrzynia");
                     System.out.println("1 Otwórz skrzynię. 2 Menu Postaci");
                     int akcja = scanner.nextInt();
-                   if(akcja==2)
-                   {Menu_ekwipunku(bohater);
-                   }
-                    if(akcja==1){
-                        int item=random.nextInt(1,5);
-                        if(item==1){
+                    if (akcja == 2) {
+                        Menu_ekwipunku(bohater);
+                    }
+                    if (akcja == 1) {
+                        int item = random.nextInt(1, 5);
+                        if (item == 1) {
                             System.out.println("Znalazłeś eliksir zdrowia");
                             bohater.dodajprzedmiot(eliksir_zdrowia);
                         }
-                        if(item==2){
+                        if (item == 2) {
                             System.out.println("Znalazłeś pancerz");
                             bohater.dodajprzedmiot(pancerz);
                         }
-                        if(item==3){
+                        if (item == 3) {
                             System.out.println("Znalazłeś miecz");
                             bohater.dodajprzedmiot(miecz);
                         }
                         if (item == 4) {
                             System.out.println("Skrzynia jest pusta");
                         }
-                        pokonany_pokoj=true;
+                        pokonany_pokoj = true;
                     }
                 }
             }
@@ -157,13 +158,13 @@ public class Main {
                 pietra++;
             }
         }
-            System.out.println("Poległeś");
-            System.out.println("Dotarłes do " + pietra + " piętra");
-        }
+        System.out.println("Poległeś");
+        System.out.println("Dotarłes do " + pietra + " piętra");
+    }
 
     public static void Menu_ekwipunku(Postac postac) {
-        Scanner scanner1=new Scanner(System.in);
-        boolean menu=true;
+        Scanner scanner1 = new Scanner(System.in);
+        boolean menu = true;
         while (menu) {
             System.out.println("1 wypisz statystyki. 2 użyj eliskiru. 3 dodaj pancerz. 4 użyj miecza. 5 wyjdz z menu");
             int akcja1 = scanner1.nextInt();
@@ -179,8 +180,8 @@ public class Main {
             if (akcja1 == 4) {
                 postac.dodajatak(miecz);
             }
-            if(akcja1 == 5){
-                menu=false;
+            if (akcja1 == 5) {
+                menu = false;
             }
         }
     }
