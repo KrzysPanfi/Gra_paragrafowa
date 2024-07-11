@@ -9,7 +9,7 @@ public class Main {
         System.out.println("Wybierz poziom trudności. 1 to łatwy 2 to średni 3 to trudny");
         int poziom_trudnosci = scanner.nextInt();
         Przedmiot eliksir_zdrowia = new Przedmiot("eliksir zdrowia", 50, 0, 0);
-        Przedmiot pancerz = new Przedmiot("pancerz", 0, 50, 0);
+        Przedmiot  pancerz = new Przedmiot("kawałek_pancerza", 0, 50, 0);
         Przedmiot miecz = new Przedmiot("miecz", 0, 0, 20);
         ArrayList<Przedmiot> eq = new ArrayList<>();
         ArrayList<Przedmiot> eq0 = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Main {
                 boolean pokonany_pokój = false;
                 while (!pokonany_pokój) {
                     System.out.println("Przed tobą widnieje dziura");
-                    System.out.println("1 Przeskocz nad dziurą. 50% szany powodzenia. 2 wypisz statystyki. 3 użyj eliskiru. 4 użyj pancerza. 5 użyj miecza");
+                    System.out.println("1 Przeskocz nad dziurą. 50% szany powodzenia. 2 wypisz statystyki. 3 użyj eliskiru. 4 dodaj pancerz. 5 użyj miecza");
                     int akcja = scanner.nextInt();
                     if (akcja == 2) {
                         bohater.wypisz();
@@ -62,7 +62,7 @@ public class Main {
                         int chance = random.nextInt(1, 3);
                         if (chance == 1) {
                             System.out.println("Spadles do dziury 30dmg");
-                            bohater.setHp(bohater.getHp() - 30);
+                             bohater.odnieś_obrażenia(30);
                         } else System.out.println("Przeskoczyłeś dziurę");
                         pokonany_pokój = true;
 
@@ -74,7 +74,7 @@ public class Main {
                 while (!pokonany_pokój) {
                     Postać wróg = new Postać("Bandyta", 100, 0, 10, eq0);
                     System.out.println("Przed tobą widnieje wrogi bandyta");
-                    System.out.println("1 Zaatakuj wroga. 2 wypisz statystyki. 3 użyj eliskiru. 4 użyj pancerza. 5 użyj miecza");
+                    System.out.println("1 Zaatakuj wroga. 2 wypisz statystyki. 3 użyj eliskiru. 4  dodaj pancerz. 5 użyj miecza");
                     int akcja = scanner.nextInt();
                     if (akcja == 2) {
                         bohater.wypisz();
@@ -113,7 +113,7 @@ public class Main {
                 boolean pokonany_pokój = false;
                 while (!pokonany_pokój) {
                     System.out.println("Przed toba widnieje pułapka wymagająca krew.");
-                    System.out.println("1 Oddaj krew -10HP. 2 Spróbuj ominąć pułapkę 25% szans na powodzienie. 3 wypisz statystyki. 4 użyj eliskiru. 5 użyj pancerza. 6 użyj miecza");
+                    System.out.println("1 Oddaj krew -10HP. 2 Spróbuj ominąć pułapkę 25% szans na powodzienie. 3 wypisz statystyki. 4 użyj eliskiru. 5 dodaj pancerz. 6 użyj miecza");
                     int akcja = scanner.nextInt();
                     if (akcja == 3) {
                         bohater.wypisz();
@@ -135,7 +135,7 @@ public class Main {
                     if (akcja == 2) {
                         int chance = random.nextInt(1, 5);
                         if (chance == 1) {
-                            System.out.println("Ominołeś pułapkę");
+                            System.out.println("Ominąłeś pułapkę");
                             pokonany_pokój = true;
                         } else {
                             System.out.println("Pułapka raniła cię 40dmg");
@@ -150,7 +150,7 @@ public class Main {
                 boolean pokonany_pokój=false;
                 while (!pokonany_pokój){
                     System.out.println("Przed tobą widnieje skrzynia");
-                    System.out.println("1 Otwórz skrzynię. 2 wypisz statystyki. 3 użyj eliskiru. 4 użyj pancerza. 5 użyj miecza");
+                    System.out.println("1 Otwórz skrzynię. 2 wypisz statystyki. 3 użyj eliskiru. 4 dodaj pancerz. 5 użyj miecza");
                     int akcja = scanner.nextInt();
                     if (akcja == 2) {
                         bohater.wypisz();

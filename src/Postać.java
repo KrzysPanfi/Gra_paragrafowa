@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class Postać {
     private String nazwa;
     private int hp;
-
+    private int pancerz;
+    private int atak;
     public ArrayList<Przedmiot> getEkwipunek() {
         return ekwipunek;
     }
@@ -35,6 +36,7 @@ public class Postać {
 
     public void dodajhp(Przedmiot eliskir ){
         if(ekwipunek.contains(eliskir)){
+            System.out.println("Odnowiono zdrowie");
             this.hp+=eliskir.getDodane_zdrowie();
             if(this.hp>100){
                 this.hp=100;
@@ -47,6 +49,7 @@ public class Postać {
     }
     public void dodajpancerz(Przedmiot pancerz ){
         if(ekwipunek.contains(pancerz)){
+            System.out.println("Odnowiono pancerz");
             this.pancerz+=pancerz.getDodany_pancerz();
             if(this.pancerz>100){
                 this.pancerz=100;
@@ -54,11 +57,12 @@ public class Postać {
             ekwipunek.remove(pancerz);
         }
         else{
-            System.out.println("Brak pancerzów");
+            System.out.println("Brak kawałków pancerza");
         }
     }
     public void dodajatak(Przedmiot miecz ){
         if(ekwipunek.contains(miecz)){
+            System.out.println("Zwiększono atak");
             this.atak+=miecz.getDodany_atak();
             if(this.atak>100){
                 this.atak=100;
@@ -114,6 +118,5 @@ public class Postać {
         this.atak = atak;
     }
 
-    private int pancerz;
-    private int atak;
+
 }
