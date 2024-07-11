@@ -21,9 +21,21 @@ public class Postać {
         this.atak = atak;
         this.ekwipunek=ekwipunek;
     }
+    public void odnieś_obrażenia(int zadane_obrażenia){
+        if(pancerz>0){
+            pancerz-=zadane_obrażenia;
+        }
+        else {
+            hp-=zadane_obrażenia;
+        }
+    }
+    public void zadaj_obrażenia(Postać cel){
+        cel.odnieś_obrażenia(atak);
+    }
+
     public void dodajhp(Przedmiot eliskir ){
-        if(!ekwipunek.contains(eliskir)){
-            this.hp=+eliskir.getDodane_zdrowie();
+        if(ekwipunek.contains(eliskir)){
+            this.hp+=eliskir.getDodane_zdrowie();
             if(this.hp>100){
                 this.hp=100;
             }
@@ -34,8 +46,8 @@ public class Postać {
         }
     }
     public void dodajpancerz(Przedmiot pancerz ){
-        if(!ekwipunek.contains(pancerz)){
-            this.hp=+pancerz.getDodany_pancerz();
+        if(ekwipunek.contains(pancerz)){
+            this.pancerz+=pancerz.getDodany_pancerz();
             if(this.pancerz>100){
                 this.pancerz=100;
             }
@@ -46,8 +58,8 @@ public class Postać {
         }
     }
     public void dodajatak(Przedmiot miecz ){
-        if(!ekwipunek.contains(miecz)){
-            this.atak=+miecz.getDodany_atak();
+        if(ekwipunek.contains(miecz)){
+            this.atak+=miecz.getDodany_atak();
             if(this.atak>100){
                 this.atak=100;
             }
@@ -57,13 +69,17 @@ public class Postać {
             System.out.println("Brak mieczy");
         }
     }
+    public  void dodajprzedmiot(Przedmiot przedmiot){
+        ekwipunek.add(przedmiot);
+    }
     public void wypisz(){
-        System.out.println("Zdrowie"+this.hp);
-        System.out.println("Pancerz"+this.pancerz);
-        System.out.println("Atak"+this.atak);
+        System.out.println("Zdrowie "+this.hp);
+        System.out.println("Pancerz "+this.pancerz);
+        System.out.println("Atak "+this.atak);
         for(Przedmiot i:ekwipunek){
             System.out.print(i.getNazwa());
         }
+        System.out.println("");
     }
 
     public String getNazwa() {
