@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Postać {
+public class Postac {
     private String nazwa;
     private int hp;
     private int pancerz;
@@ -15,14 +15,14 @@ public class Postać {
 
     private ArrayList<Przedmiot>ekwipunek=new ArrayList<>();
 
-    public Postać(String nazwa, int hp, int pancerz, int atak,ArrayList<Przedmiot>ekwipunek) {
+    public Postac(String nazwa, int hp, int pancerz, int atak, ArrayList<Przedmiot>ekwipunek) {
         this.nazwa = nazwa;
         this.hp = hp;
         this.pancerz = pancerz;
         this.atak = atak;
         this.ekwipunek=ekwipunek;
     }
-    public void odnieś_obrażenia(int zadane_obrażenia){
+    public void odnies_obrazenia(int zadane_obrażenia){
         if(pancerz>0){
             pancerz-=zadane_obrażenia;
         }
@@ -30,8 +30,8 @@ public class Postać {
             hp-=zadane_obrażenia;
         }
     }
-    public void zadaj_obrażenia(Postać cel){
-        cel.odnieś_obrażenia(atak);
+    public void zadaj_obrazenia(Postac cel){
+        cel.odnies_obrazenia(atak);
     }
 
     public void dodajhp(Przedmiot eliskir ){
