@@ -6,9 +6,9 @@ public class Main {
     static Przedmiot eliksir_zdrowia = new Przedmiot("eliksir zdrowia", 50, 0, 0);
     static Przedmiot pancerz = new Przedmiot("kawałek pancerza", 0, 50, 0);
     static Przedmiot miecz = new Przedmiot("miecz", 0, 0, 20);
+    static Scanner scanner=new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         System.out.println("Wybierz poziom trudności. 1 to łatwy 2 to średni 3 to trudny");
         int poziom_trudnosci = scanner.nextInt();
@@ -163,11 +163,10 @@ public class Main {
     }
 
     public static void Menu_ekwipunku(Postac postac) {
-        Scanner scanner1 = new Scanner(System.in);
         boolean menu = true;
         while (menu) {
             System.out.println("1 wypisz statystyki. 2 użyj eliskiru. 3 dodaj pancerz. 4 użyj miecza. 5 wyjdz z menu");
-            int akcja1 = scanner1.nextInt();
+            int akcja1 = scanner.nextInt();
             if (akcja1 == 1) {
                 postac.wypisz();
             }
