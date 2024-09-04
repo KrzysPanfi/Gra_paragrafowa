@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -36,7 +37,7 @@ public class Main {
             bohater.setAtak(10);
             bohater.setEkwipunek(eq);
         }
-        System.out.println("Jesteś poszukiwaczem przygód okrywającym starożytne lochy. Lochy są podzielona na piętra.");
+        System.out.println("Jesteś poszukiwaczem przygód okrywającym starożytne lochy. Lochy są podzielone na piętra.");
         System.out.println("Aby wybrać akcję trzeba podac jej numer");
         while (gra) {
             System.out.println("Piętro " + pietra);
@@ -90,6 +91,8 @@ public class Main {
                                 wrog.zadaj_obrazenia(bohater);
                                 System.out.println("Wróg zaatakował ciebie " + wrog.getAtak() + "dmg");
                             }
+                            System.out.println("Napisz 1 aby kontynuować");
+                            int cont=scanner.nextInt();
                         }
                         pokonany_pokoj = true;
                     }
