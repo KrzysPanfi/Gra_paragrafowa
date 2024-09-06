@@ -76,14 +76,13 @@ public class Main {
                     }
 
                     if (akcja == 1) {
-                        boolean walka = true;
-                        while (walka) {
+                        while (true) {
                             int atak = random.nextInt(1, 3);
                             if (wrog.getHp() <= 0) {
                                 System.out.println("Pokonałeś wroga");
-                                walka = false;
+                               break;
                             } else if (bohater.getHp() <= 0) {
-                                walka = false;
+                                break;
                             } else if (atak == 1) {
                                 bohater.zadaj_obrazenia(wrog);
                                 System.out.println("Zaatakowałeś wroga " + bohater.getAtak() + "dmg");
@@ -111,17 +110,20 @@ public class Main {
                     if (akcja == 1) {
                         System.out.println("Oddaleś krew");
                         bohater.setHp(bohater.getHp() - 10);
+                        pokonany_pokoj = true;
                     }
                     if (akcja == 2) {
                         int chance = random.nextInt(1, 5);
                         if (chance == 1) {
                             System.out.println("Ominąłeś pułapkę");
+                            pokonany_pokoj = true;
                         } else {
                             System.out.println("Pułapka raniła cię 40dmg");
                             bohater.odnies_obrazenia(40);
+                            pokonany_pokoj = true;
                         }
                     }
-                    pokonany_pokoj = true;
+
                 }
 
             }
