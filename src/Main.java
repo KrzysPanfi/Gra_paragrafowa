@@ -40,7 +40,6 @@ public class Main {
             while (life) {
                 System.out.println("Piętro " + pietra);
                 int pokoj = random.nextInt(1, 5);
-                 pokoj=4;
                 boolean pokonany_pokoj;
                 if (pokoj == 1) {
                     pokonany_pokoj = false;
