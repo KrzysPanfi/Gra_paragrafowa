@@ -77,6 +77,15 @@ public class Postac {
             System.out.println("Brak mieczy");
         }
     }
+    public void Uzyj_deski (Przedmiot deska){
+        if(ekwipunek.contains(deska)){
+            System.out.println("Użyto deski");
+            ekwipunek.remove(deska);
+        }
+        else{
+            System.out.println("Brak deski");
+        }
+    }
 
     public void dodajprzedmiot(Przedmiot przedmiot) {
         ekwipunek.add(przedmiot);
@@ -87,7 +96,7 @@ public class Postac {
         System.out.println("Pancerz " + this.pancerz);
         System.out.println("Atak " + this.atak);
         for (Przedmiot i : ekwipunek) {
-            System.out.print(i.getNazwa()+" ");
+            System.out.print(i.getNazwa()+"; ");
         }
         System.out.println("");
     }
